@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Chat - Real Connections Nearby</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#ff6b9d">
+</head>
+<body>
+    <div class="container">
+        <!-- LOGO + HEADER -->
+        <div class="header">
+            <div class="logo">
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+                <h1>Nearby Chat</h1>
+            </div>
+            <p>Discover real people around you</p>
+        </div>
+
+        <!-- MAIN FORM -->
+        <form id="profileForm" class="form">
+            <!-- STEP 1: Username + Age -->
+            <div class="step active" data-step="1">
+                <div class="step-title">
+                    <i class="fas fa-user-plus"></i>
+                    <h2>Create Profile</h2>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Enter username" maxlength="25" required>
+                    <input type="number" id="age" placeholder="Age (18+)" min="18" max="65" required>
+                </div>
+                <button type="button" class="next-btn" onclick="nextStep()">
+                    <span>Next</span> <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- STEP 2: Phone (+91 Auto) -->
+            <div class="step" data-step="2">
+                <div class="step-title">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h2>Phone Verification</h2>
+                </div>
+                <div class="phone-input">
+                    <div class="country-code">+91</div>
+                    <input type="tel" id="phone" placeholder="1234567890" maxlength="10" required>
+                </div>
+                <div class="otp-section" id="otpSection" style="display: none;">
+                    <div class="otp-inputs">
+                        <input type="text" class="otp-digit" maxlength="1">
+                        <input type="text" class="otp-digit" maxlength="1">
+                        <input type="text" class="otp-digit" maxlength="1">
+                        <input type="text" class="otp-digit" maxlength="1">
+                    </div>
+                </div>
+                <button type="button" class="verify-btn" id="sendOtpBtn" onclick="sendOTP()">Send OTP</button>
+                <button type="button" class="verify-btn success" id="verifyOtpBtn" onclick="verifyOTP()" style="display: none;">
+                    Verify OTP
+                </button>
+            </div>
+
+            <!-- STEP 3: Gender + State -->
+            <div class="step" data-step="3">
+                <div class="step-title">
+                    <i class="fas fa-venus-mars"></i>
+                    <h2>Tell us about you</h2>
+                </div>
+                <div class="gender-grid">
+                    <button type="button" class="gender-btn active" data-gender="Male">
+                        <i class="fas fa-male"></i> Male
+                    </button>
+                    <button type="button" class="gender-btn" data-gender="Female">
+                        <i class="fas fa-female"></i> Female
+                    </button>
+                    <button type="button" class="gender-btn" data-gender="Other">
+                        <i class="fas fa-user"></i> Other
+                    </button>
+                </div>
+                <input type="text" id="state" placeholder="City/State" required>
+                <button type="button" class="next-btn" onclick="nextStep()">Continue</button>
+            </div>
+
+            <!-- STEP 4: Location Consent -->
+            <div class="step" data-step="4">
+                <div class="step-title">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h2>Find Nearby Matches</h2>
+                </div>
+                <div class="location-card">
+                    <i class="fas fa-location-dot"></i>
+                    <p>Enable location to see matches within 5km</p>
+                </div>
+                <button type="button" class="location-btn" onclick="requestLocation()">
+                    <i class="fas fa-location-arrow"></i> Allow Location
+                </button>
+            </div>
+
+            <!-- SUCCESS -->
+            <div class="step success" data-step="5">
+                <div class="success-content">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Profile Ready!</h2>
+                    <p>Start chatting with nearby people</p>
+                    <button type="button" class="start-btn" onclick="completeProfile()">Start Matching</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- FOOTER -->
+        <footer>
+            <p><i class="fas fa-shield-alt"></i> Secure & Private</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
